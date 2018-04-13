@@ -686,13 +686,13 @@ class InstagramAPI:
         userFeed = self.SendRequest('feed/tag/' + str(tag) + '/?rank_token=' + str(self.rank_token) + '&ranked_content=true&')
         return userFeed
 
-    def getMediaLikers(self, mediaId):
+    def getMediaLikers(self, mediaId):  # likes behavior: useful for media recommendation
         likers = self.SendRequest('media/' + str(mediaId) + '/likers/?')
         return likers
 
-    def getGeoMedia(self, usernameId):
+    def getGeoMedia(self, usernameId):  # transfer between two cities!
         locations = self.SendRequest('maps/user/' + str(usernameId) + '/')
-        return locations
+        return locations  # many usernames have no locations! they are empty...sad
 
     def getSelfGeoMedia(self):
         return self.getGeoMedia(self.username_id)
